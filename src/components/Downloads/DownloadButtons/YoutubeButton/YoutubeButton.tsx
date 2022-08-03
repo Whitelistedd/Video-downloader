@@ -3,13 +3,13 @@ import { DownloadButtonProps } from '../DownloadButtons.model'
 
 export const YoutubeButtons: React.FC<DownloadButtonProps> = ({ videos }) => {
   return (
-    <Container>
+    <>
       {videos?.map((video, index) => (
         <Anchor target="_blank" href={video.url} key={`button-number-${index}`}>
           <DownloadButton>{`${video.quality}.${video.extension}`}</DownloadButton>
         </Anchor>
       ))}
-    </Container>
+    </>
   )
 }
 

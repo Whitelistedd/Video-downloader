@@ -18,10 +18,10 @@ export const Downloads: React.FC<DownloadProps> = ({
           src={`https://muha.mo.cloudinary.net/getImage/${thumbnail}`}
           alt={title}
           width={
-            videoType === 'youtube' ? 168 : videoType === 'tiktok' ? 250 : 0
+            videoType === 'youtube' ? 368 : videoType === 'tiktok' ? 250 : 0
           }
           height={
-            videoType === 'youtube' ? 94 : videoType === 'tiktok' ? 400 : 0
+            videoType === 'youtube' ? 220 : videoType === 'tiktok' ? 400 : 0
           }
         />
         <About>
