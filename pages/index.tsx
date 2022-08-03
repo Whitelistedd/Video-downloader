@@ -5,11 +5,13 @@ import { Navbar } from 'src/components/Navbar/Navbar'
 import styled from 'styled-components'
 import YoutubeLogo from 'src/assets/images/youtubeLogo.svg'
 import TiktokLogo from 'src/assets/images/tiktokLogo.svg'
+import InstagramLogo from 'src/assets/images/instagramLogo.svg'
 import Link from 'next/link'
 
 const AllDownloadPages = [
   { name: 'youtube', image: YoutubeLogo },
   { name: 'tiktok', image: TiktokLogo },
+  { name: 'instagram', image: InstagramLogo },
 ]
 
 const Home: NextPage = () => {
