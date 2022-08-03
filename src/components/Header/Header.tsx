@@ -15,7 +15,9 @@ export const Header: React.FC<HeaderProps> = ({
       <Title>
         {DownloaderType} video <HighlightedText text="downloader" />
       </Title>
-      <SubTitle>Save videos from Youtube directly to your device.</SubTitle>
+      <SubTitle>
+        Save videos from {DownloaderType} directly to your device.
+      </SubTitle>
       <Error>{error}</Error>
       <Searchbar
         handleSearchInput={handleSearchInput}

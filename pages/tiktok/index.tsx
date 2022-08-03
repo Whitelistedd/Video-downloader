@@ -4,16 +4,35 @@ import styled from 'styled-components'
 import { Header } from 'src/components/Header/Header'
 import { Navbar } from 'src/components/Navbar/Navbar'
 import { useState } from 'react'
+import { DownloadVideo } from 'src/apiCalls/DownloadCall'
+import { Downloads } from 'src/components/Downloads/Downloads'
+import { VideoType } from 'src/components/Downloads/Downloads.model'
+
+type VideoInfo = {
+  videoType: string
+  thumbnail: string
+  title: string
+  channelName: string
+  videos: VideoType
+}
 
 const TiktokPage: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
+  const [videoInfo, setVideoInfo] = useState<VideoInfo>()
   const [error, setError] = useState('')
 
   const handleSearchInput = (searchTerm: string) => {
     setSearchTerm(searchTerm)
   }
 
-  const handleSearchSubmit = () => {
+  const handleSearchSubmit = async () => {
+    const tiktokURL = searchTerm
+    if (!tiktokURL) {
+      setError('please enter a valid tiktok url')
+      return
+    }
+    const response = await DownloadVideo('tiktok', `${tiktokURL}`)
+    setVideoInfo(response)
     setError('')
   }
 
@@ -32,6 +51,15 @@ const TiktokPage: NextPage = () => {
         searchTerm={searchTerm}
         error={error}
       />
+      {videoInfo && (
+        <Downloads
+          title={videoInfo.title}
+          thumbnail={videoInfo.thumbnail}
+          videos={videoInfo.videos}
+          channelName={videoInfo.channelName}
+          videoType={'tiktok'}
+        />
+      )}
     </Container>
   )
 }

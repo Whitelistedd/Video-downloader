@@ -10,29 +10,36 @@ export default async function handler(
     return res.status(400).json({ message: 'not a post request' })
   }
 
-  const videoId = req.body.url
+  const tiktokURL = req.body.url
 
-  if (videoId.length > 11 || videoId.length < 11) {
-    return res.status(400).json({ message: 'please a valid youtube url' })
+  if (!tiktokURL) {
+    return res.status(400).json({ message: 'please a valid tiktok url' })
   }
 
   const options = {
     method: 'GET',
-    url: 'https://youtube-media-downloader.p.rapidapi.com/v2/video/details',
-    params: { videoId: `${videoId}` },
+    url: 'https://tiktok-downloader-download-tiktok-videos-without-watermark.p.rapidapi.com/vid/index',
+    params: {
+      url: `${tiktokURL}`,
+    },
     headers: {
       'X-RapidAPI-Key': `${process.env.API_KEY}`,
-      'X-RapidAPI-Host': 'youtube-media-downloader.p.rapidapi.com',
+      'X-RapidAPI-Host':
+        'tiktok-downloader-download-tiktok-videos-without-watermark.p.rapidapi.com',
     },
   }
 
   try {
     const response = await axios(options)
     return res.status(200).json({
-      title: response.data.title,
-      thumbnail: response.data.thumbnails[0].url,
-      channelName: response.data.channel.name,
-      videos: response.data.videos.items,
+      title: '',
+      thumbnail: response.data.dynamic_cover[0],
+      channelName: response.data.author[0],
+      videos: [
+        {
+          url: response.data.video[0],
+        },
+      ],
     })
   } catch (e) {
     console.log(e)

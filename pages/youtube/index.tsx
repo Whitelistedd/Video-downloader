@@ -4,12 +4,21 @@ import styled from 'styled-components'
 import { Header } from 'src/components/Header/Header'
 import { Navbar } from 'src/components/Navbar/Navbar'
 import { useState } from 'react'
-import { DownloadYoutubeVideo } from 'src/apiCalls/YoutubeCall'
-import { YoutubeDownload } from 'src/components/Downloads/Youtube/YoutubeDownload'
+import { Downloads } from 'src/components/Downloads/Downloads'
+import { DownloadVideo } from 'src/apiCalls/DownloadCall'
+import { VideoType } from 'src/components/Downloads/Downloads.model'
+
+type VideoInfo = {
+  videoType: string
+  thumbnail: string
+  title: string
+  channelName: string
+  videos: VideoType
+}
 
 const Youtube: NextPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
-  const [videoInfo, setVideoInfo] = useState()
+  const [videoInfo, setVideoInfo] = useState<VideoInfo>()
   const [error, setError] = useState('')
 
   const handleSearchInput = (searchTerm: string) => {
@@ -22,7 +31,7 @@ const Youtube: NextPage = () => {
       setError('please enter a valid youtube url')
       return
     }
-    const response = await DownloadYoutubeVideo(`${videoId}`)
+    const response = await DownloadVideo('youtube', `${videoId}`)
     setVideoInfo(response)
     setError('')
   }
@@ -42,7 +51,15 @@ const Youtube: NextPage = () => {
         searchTerm={searchTerm}
         error={error}
       />
-      {videoInfo && <YoutubeDownload Video={videoInfo} />}
+      {videoInfo && (
+        <Downloads
+          title={videoInfo.title}
+          thumbnail={videoInfo.thumbnail}
+          videos={videoInfo.videos}
+          channelName={videoInfo.channelName}
+          videoType={'youtube'}
+        />
+      )}
     </Container>
   )
 }
