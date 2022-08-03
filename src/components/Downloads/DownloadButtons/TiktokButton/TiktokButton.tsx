@@ -5,7 +5,11 @@ export const TiktokButton: React.FC<DownloadButtonProps> = ({ videos }) => {
   return (
     <Container>
       {videos?.map((video, index) => (
-        <Anchor target="_blank" href={video.url} key={`button-number-${index}`}>
+        <Anchor
+          target="_blank"
+          href={`https://muha.mo.cloudinary.net/getVideo/${video.url}`}
+          key={`button-number-${index}`}
+        >
           <DownloadButton>Download</DownloadButton>
         </Anchor>
       ))}

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { HighlightedText } from '../HighlightedText/HighlightedText'
 
-const NavItems = ['Youtube', 'TikTok', 'Reddit', 'Twitter']
+const NavItems = ['Youtube', 'TikTok', 'Reddit', 'Twitter', 'Instagram']
 
 export const Navbar: React.FC = () => {
   return (

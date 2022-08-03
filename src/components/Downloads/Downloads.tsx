@@ -17,19 +17,18 @@ export const Downloads: React.FC<DownloadProps> = ({
         <Thumbnail
           src={`https://muha.mo.cloudinary.net/getImage/${thumbnail}`}
           alt={title}
-          width={
-            videoType === 'youtube' ? 368 : videoType === 'tiktok' ? 250 : 0
-          }
-          height={
-            videoType === 'youtube' ? 220 : videoType === 'tiktok' ? 400 : 0
-          }
+          width={videoType === 'youtube' ? 368 : 250}
+          height={videoType === 'youtube' ? 220 : 400}
         />
         <About>
           <Title>{title}</Title>
           <ChannelName>{channelName}</ChannelName>
           <DownloadButtons>
-            {videoType === 'youtube' && <YoutubeButtons videos={videos} />}
-            {videoType === 'tiktok' && <TiktokButton videos={videos} />}
+            {videoType === 'youtube' ? (
+              <YoutubeButtons videos={videos} />
+            ) : (
+              <TiktokButton videos={videos} />
+            )}
           </DownloadButtons>
         </About>
       </Info>
