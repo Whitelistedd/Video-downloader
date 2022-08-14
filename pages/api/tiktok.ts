@@ -31,13 +31,25 @@ export default async function handler(
 
   try {
     const response = await axios(options)
+    if (response.data.error[0]) {
+      return res.status(400).json({ message: response.data.error?.[0] })
+    }
+
+    if (response.data) {
+      return res.status(200).json({ message: response.data })
+    }
+
+    if (!response.data) {
+      return res.status(200).json({ message: response.data })
+    }
+
     return res.status(200).json({
       title: '',
-      thumbnail: response.data.dynamic_cover[0],
-      channelName: response.data.author[0],
+      thumbnail: response.data.dynamic_cover?.[0],
+      channelName: response.data.author?.[0],
       videos: [
         {
-          url: response.data.video[0],
+          url: response?.data?.video?.[0],
         },
       ],
     })

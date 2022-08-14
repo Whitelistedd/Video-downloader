@@ -55,7 +55,10 @@ const DownloadPage = styled.button`
   }
 `
 
-const Title = styled.h1``
+const Title = styled.h1`
+  font-size: 2em;
+  text-align: center;
+`
 
 const DownloadPages = styled.div`
   gap: 1em;
@@ -74,12 +77,17 @@ const Wrap = styled.div`
   min-height: calc(100vh - 80px);
   gap: 1em;
   width: 100%;
+  padding: 1em;
 `
 
 const Container = styled.div`
   min-height: 100vh;
   width: 100%;
   max-width: 1440px;
+
+  @media only screen and (max-width: 800px) {
+    font-size: 12px;
+  }
 `
 
 export default Home

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { HighlightedText } from '../HighlightedText/HighlightedText'
 
-const NavItems = ['Youtube', 'TikTok', 'Instagram']
+const NavItems = ['Youtube', 'TikTok', 'Instagram', 'Reddit']
 
 export const Navbar: React.FC = () => {
   return (
@@ -45,4 +45,12 @@ const Container = styled.nav`
   justify-content: center;
   border-bottom: 1px solid grey;
   height: 80px;
+  padding: 1em;
+
+  @media only screen and (max-width: 800px) {
+    justify-content: space-between;
+    ${NavList} {
+      margin: 0px;
+    }
+  }
 `

@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import { DownloadPage } from 'src/components/DownloadPage/DownloadPage'
 
-const Youtube: NextPage = () => {
-  return <DownloadPage videoType="Youtube" />
+const Instagram: NextPage = () => {
+  return <DownloadPage videoType="Reddit" />
 }
 
-export default Youtube
+export default Instagram
