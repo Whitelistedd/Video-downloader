@@ -34,7 +34,7 @@ export const GenerateTiktokConfig = (videoURL: string) => {
       link: `${videoURL}`,
     },
     headers: {
-      'X-RapidAPI-Key': '5a36c8404fmsha75e4269e7a3830p14137djsn065d9c3fa577',
+      'X-RapidAPI-Key': `${process.env.API_KEY}`,
       'X-RapidAPI-Host':
         'tiktok-downloader-download-videos-without-watermark1.p.rapidapi.com',
     },
