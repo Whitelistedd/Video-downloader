@@ -1,7 +1,7 @@
-import styled from 'styled-components'
-import { HighlightedText } from '../HighlightedText/HighlightedText'
-import { Searchbar } from '../Searchbar/Searchbar'
 import { HeaderProps } from './Header.model'
+import { HighlightedText } from '../Elements/HighlightedText/HighlightedText'
+import { Searchbar } from '../Elements/Searchbar/Searchbar'
+import styled from 'styled-components'
 
 export const Header: React.FC<HeaderProps> = ({
   DownloaderType,
