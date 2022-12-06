@@ -17,7 +17,7 @@ export default async function handler(
 
   const videoURL = req.body.url
 
-  console.log(videoURL.match(tiktokRegex))
+  console.log(!!videoURL.match(youtubeRegex))
 
   try {
     if (videoURL.match(youtubeRegex)) {
@@ -29,6 +29,8 @@ export default async function handler(
     } else if (videoURL.match(InstaRegex)) {
       const response = await getInstaVideo(videoURL)
       return res.status(200).json(response)
+    } else {
+      throw new Error('invalid url')
     }
   } catch (e) {
     console.log(e)

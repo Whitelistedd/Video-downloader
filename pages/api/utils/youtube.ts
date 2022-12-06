@@ -22,8 +22,8 @@ export const getYoutubeVideo = async (url: string) => {
     thumbnail: response.data.thumbnails[0].url,
     views: response.data.viewCount,
     channelName: response.data.channel.name,
-    videos: response.data.videos.items,
-    audios: response.data.audios.items,
+    videos: response.data?.videos.items,
+    audios: response.data?.audios.items,
   }
 }
 

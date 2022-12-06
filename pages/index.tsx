@@ -26,8 +26,6 @@ const Home: NextPage = () => {
     setVideoInfo(res)
   }
 
-  console.log(videoInfo)
-
   return (
     <Container>
       <Wrap>
@@ -37,7 +35,7 @@ const Home: NextPage = () => {
           handleSearchSubmit={() => handleVideoSearch()}
           handleSearchInput={(value) => setSearchTerm(value)}
         />
-        {videoInfo.videos.length > 0 && (
+        {videoInfo?.videos?.length > 0 && (
           <>
             <VideoInfo
               title={videoInfo.title}

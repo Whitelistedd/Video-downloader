@@ -4,10 +4,10 @@ export const getTiktokVideo = async (url: string) => {
   if (!url) {
     return { message: 'not valid' }
   }
+  console.log(url)
 
   const response = await axios(GenerateTiktokConfig(url))
   const info = response.data.result
-  console.log(info)
   return {
     title: info.aweme_detail.desc,
     thumbnail: info.aweme_detail.video?.origin_cover?.url_list?.[0],
@@ -42,4 +42,4 @@ export const GenerateTiktokConfig = (videoURL: string) => {
 }
 
 export const tiktokRegex =
-  /https:\/\/www\.tiktok\.com\/@[A-Za-z0-9-_-]+\/video\/[A-Za-z0-9]+/
+  /https:\/\/www\.tiktok\.com\/@[A-Za-z0-9-_.-]+\/video\/[A-Za-z0-9]+/
